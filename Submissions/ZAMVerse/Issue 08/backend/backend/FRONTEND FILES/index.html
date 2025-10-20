@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Inventory & Sales</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>ShopEase Inventory & Sales</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Add Product</h2>
+      <form id="productForm">
+        <input type="text" id="name" placeholder="Product Name" required>
+        <input type="text" id="sku" placeholder="SKU" required>
+        <input type="text" id="category" placeholder="Category">
+        <input type="number" id="price" placeholder="Price" required>
+        <input type="number" id="quantity" placeholder="Quantity" required>
+        <button type="submit">Add Product</button>
+      </form>
+    </section>
+
+    <section class="inventory-section">
+      <h2>Inventory</h2>
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>SKU</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="sales-section">
+      <h2>Sales</h2>
+      <form id="salesForm">
+        <input type="text" id="saleSku" placeholder="Product SKU" required>
+        <input type="number" id="saleQty" placeholder="Quantity Sold" required>
+        <button type="submit">Record Sale</button>
+      </form>
+      <div id="salesSummary"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
