@@ -33,10 +33,10 @@ Before participating, ensure you have the following ready:
 
 To ensure smooth participation, follow the official workflow and collaboration rules provided in these documents:
 
-| Document | Description |
-|-----------|-------------|
-| [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) | Step-by-step guide on how to fork, branch, and submit your project |
-| [TEAM_COLLABORATION.md](./TEAM_COLLABORATION.md) | Guide for team coordination, merging work, and avoiding conflicts |
+| Document                                         | Description                                                        |
+| ------------------------------------------------ | ------------------------------------------------------------------ |
+| [GIT_WORKFLOW.md](./GIT_WORKFLOW.md)             | Step-by-step guide on how to fork, branch, and submit your project |
+| [TEAM_COLLABORATION.md](./TEAM_COLLABORATION.md) | Guide for team coordination, merging work, and avoiding conflicts  |
 
 *Quick Summary:*
 - Fork this repository.
