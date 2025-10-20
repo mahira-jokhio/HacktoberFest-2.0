@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinQuest - Gamified Finance Tracker by Team ZAMVerse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .page-title {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .page-title h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        /* Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .card-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-change {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .positive {
+            color: #28a745;
+        }
+        
+        .negative {
+            color: #dc3545;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        /* Transactions Styles */
+        .transactions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--light-gray);
+        }
+        
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .transactions-table th,
+        .transactions-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .transactions-table th {
+            background: var(--light-gray);
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .transactions-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .food { background: #ffd6cc; color: #b33c12; }
+        .transport { background: #ccf2ff; color: #006680; }
+        .entertainment { background: #e6ccff; color: #5900b3; }
+        .utilities { background: #ffffcc; color: #999900; }
+        .shopping { background: #ffccf2; color: #b30086; }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray);
+            margin-left: 5px;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* Goals Styles */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .goal-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .goal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .goal-amount {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: var(--light-gray);
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        .goal-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Achievements Styles */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .achievement-card.locked .achievement-icon {
+            background: var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .achievement-card.earned .achievement-icon {
+            background: var(--success);
+            color: white;
+        }
+        
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .achievement-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-progress {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .toggle-form {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .transactions-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .goals-grid, .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-coins"></i>
+                    <span>FinQuest</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                        <li><a href="#" class="nav-link" data-page="transactions">Transactions</a></li>
+                        <li><a href="#" class="nav-link" data-page="goals">Goals</a></li>
+                        <li><a href="#" class="nav-link" data-page="achievements">Achievements</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <div class="avatar">ZAM</div>
+                        <span>ZAMVerse</span>
+                    </div>
+                    <button class="btn btn-outline" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page active">
+            <div class="page-title">
+                <h2>Financial Dashboard</h2>
+                <div>
+                    <button class="btn" id="add-transaction-btn">
+                        <i class="fas fa-plus"></i> Add Transaction
+                    </button>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Total Balance</div>
+                        <div class="card-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">RS 14,250.75</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> 5.2% from last month
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Monthly Income</div>
+                        <div class="card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">RS 13,500.00</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> Consistent
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Monthly Expenses</div>
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">RS 11,845.25</div>
+                    <div class="card-change negative">
+                        <i class="fas fa-arrow-up"></i> 12.5% from last month
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Savings Rate</div>
+                        <div class="card-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">47.3%</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> 3.1% from last month
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Spending by Category</div>
+                <canvas id="spendingChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Monthly Overview</div>
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Transactions Page -->
+        <section id="transactions" class="page">
+            <div class="page-title">
+                <h2>Transaction History</h2>
+                <div>
+                    <button class="btn" id="add-transaction-btn-2">
+                        <i class="fas fa-plus"></i> Add Transaction
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <div class="transactions-header">
+                <div>
+                    <input type="text" class="form-control" placeholder="Search transactions..." style="width: 250px;">
+                </div>
+                <div>
+                    <select class="form-control" style="width: 150px;">
+                        <option>All Categories</option>
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Entertainment</option>
+                        <option>Utilities</option>
+                        <option>Shopping</option>
+                    </select>
+                </div>
+            </div>
+            
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jun 15, 2023</td>
+                        <td>Grocery Store</td>
+                        <td><span class="category-badge food">Food</span></td>
+                        <td class="negative">-RS 1185.50</td>
+                        <td>
+                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jun 14, 2023</td>
+                        <td>Salary Deposit</td>
+                        <td><span class="category-badge" style="background:#ccffcc; color:#006600;">Income</span></td>
+                        <td class="positive">+RS 113,500.00</td>
+                        <td>
+                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jun 12, 2023</td>
+                        <td>Gas Station</td>
+                        <td><span class="category-badge transport">Transport</span></td>
+                        <td class="negative">-RS 1145.00</td>
+                        <td>
+                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jun 10, 2023</td>
+                        <td>Netflix Subscription</td>
+                        <td><span class="category-badge entertainment">Entertainment</span></td>
+                        <td class="negative">-RS 1015.99</td>
+                        <td>
+                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jun 8, 2023</td>
+                        <td>Electricity Bill</td>
+                        <td><span class="category-badge utilities">Utilities</span></td>
+                        <td class="negative">-RS 7120.75</td>
+                        <td>
+                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Goals Page -->
+        <section id="goals" class="page">
+            <div class="page-title">
+                <h2>Financial Goals</h2>
+                <div>
+                    <button class="btn" id="add-goal-btn">
+                        <i class="fas fa-plus"></i> Add Goal
+                    </button>
+                </div>
+            </div>
+            
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-title">Emergency Fund</div>
+                        <div class="goal-amount">RS 12,500 / RS 25,500</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%"></div>
+                    </div>
+                    <div class="goal-info">
+                        <span>50% Complete</span>
+                        <span>Target: Dec 2023</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-title">New Laptop</div>
+                        <div class="goal-amount">RS 1700 / RS 71,200</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 67%"></div>
+                    </div>
+                    <div class="goal-info">
+                        <span>67% Complete</span>
+                        <span>Target: Oct 2023</span>
+                    </div>
+                </div>
+                
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-title">Vacation to Hawaii</div>
+                        <div class="goal-amount">RS 121,200 / RS 53,000</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%"></div>
+                    </div>
+                    <div class="goal-info">
+                        <span>40% Complete</span>
+                        <span>Target: Mar 2024</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements Page -->
+        <section id="achievements" class="page">
+            <div class="page-title">
+                <h2>Achievements</h2>
+                <div>
+                    <span class="card-value">Level 7</span>
+                    <div class="card-change positive">1250 XP</div>
+                </div>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card earned">
+                    <div class="achievement-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="achievement-title">First Saver</div>
+                    <div class="achievement-desc">Save your first RS 15000</div>
+                    <div class="achievement-progress">Earned on May 15, 2023</div>
+                </div>
+                
+                <div class="achievement-card earned">
+                    <div class="achievement-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="achievement-title">Budget Master</div>
+                    <div class="achievement-desc">Stay under budget for 3 consecutive months</div>
+                    <div class="achievement-progress">Earned on Jun 1, 2023</div>
+                </div>
+                
+                <div class="achievement-card earned">
+                    <div class="achievement-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="achievement-title">No-Spend Streak</div>
+                    <div class="achievement-desc">Complete 5 no-spend days in a month</div>
+                    <div class="achievement-progress">Earned on May 28, 2023</div>
+                </div>
+                
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-title">Savings Guru</div>
+                    <div class="achievement-desc">Achieve a 50% savings rate for a month</div>
+                    <div class="achievement-progress">Progress: 47%</div>
+                </div>
+                
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="achievement-title">Investment Novice</div>
+                    <div class="achievement-desc">Make your first investment</div>
+                    <div class="achievement-progress">Not started</div>
+                </div>
+                
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="achievement-title">Goal Crusher</div>
+                    <div class="achievement-desc">Complete 5 financial goals</div>
+                    <div class="achievement-progress">Progress: 2/5</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Login Page -->
+        <section id="login" class="page">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h2 class="login-title">Welcome to FinQuest</h2>
+                    
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Login</button>
+                    </form>
+                    
+                    <div class="toggle-form">
+                        Don't have an account? <a href="#" id="show-register">Register</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Register Page -->
+        <section id="register" class="page">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-logo">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h2 class="login-title">Create Account</h2>
+                    
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label class="form-label" for="reg-name">Full Name</label>
+                            <input type="text" class="form-control" id="reg-name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">Email</label>
+                            <input type="email" class="form-control" id="reg-email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="reg-password">Password</label>
+                            <input type="password" class="form-control" id="reg-password" placeholder="Create a password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="reg-confirm">Confirm Password</label>
+                            <input type="password" class="form-control" id="reg-confirm" placeholder="Confirm your password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Register</button>
+                    </form>
+                    
+                    <div class="toggle-form">
+                        Already have an account? <a href="#" id="show-login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal" id="transaction-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Transaction</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label class="form-label" for="transaction-date">Date</label>
+                    <input type="date" class="form-control" id="transaction-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transaction-description">Description</label>
+                    <input type="text" class="form-control" id="transaction-description" placeholder="Enter description" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transaction-amount">Amount</label>
+                    <input type="number" class="form-control" id="transaction-amount" placeholder="Enter amount" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transaction-type">Type</label>
+                    <select class="form-control" id="transaction-type" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="transaction-category">Category</label>
+                    <select class="form-control" id="transaction-category" required>
+                        <option value="food">Food</option>
+                        <option value="transport">Transport</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline close-modal">Cancel</button>
+                    <button type="submit" class="btn">Add Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Goal Modal -->
+    <div class="modal" id="goal-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Financial Goal</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="goal-form">
+                <div class="form-group">
+                    <label class="form-label" for="goal-title">Goal Title</label>
+                    <input type="text" class="form-control" id="goal-title" placeholder="Enter goal title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="goal-target">Target Amount</label>
+                    <input type="number" class="form-control" id="goal-target" placeholder="Enter target amount" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="goal-current">Current Amount</label>
+                    <input type="number" class="form-control" id="goal-current" placeholder="Enter current amount" step="0.01" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="goal-deadline">Target Date</label>
+                    <input type="date" class="form-control" id="goal-deadline" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline close-modal">Cancel</button>
+                    <button type="submit" class="btn">Add Goal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+            });
+        });
+
+        // Modal Handling
+        const transactionModal = document.getElementById('transaction-modal');
+        const goalModal = document.getElementById('goal-modal');
+        
+        // Open transaction modal
+        document.getElementById('add-transaction-btn').addEventListener('click', () => {
+            transactionModal.classList.add('active');
+        });
+        
+        document.getElementById('add-transaction-btn-2').addEventListener('click', () => {
+            transactionModal.classList.add('active');
+        });
+        
+        // Open goal modal
+        document.getElementById('add-goal-btn').addEventListener('click', () => {
+            goalModal.classList.add('active');
+        });
+        
+        // Close modals
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', () => {
+                transactionModal.classList.remove('active');
+                goalModal.classList.remove('active');
+            });
+        });
+        
+        // Form submissions
+        document.getElementById('transaction-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Transaction added successfully!');
+            transactionModal.classList.remove('active');
+            this.reset();
+        });
+        
+        document.getElementById('goal-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Goal added successfully!');
+            goalModal.classList.remove('active');
+            this.reset();
+        });
+        
+        // Login/Register Toggle
+        document.getElementById('show-register').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login').classList.remove('active');
+            document.getElementById('register').classList.add('active');
+        });
+        
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('register').classList.remove('active');
+            document.getElementById('login').classList.add('active');
+        });
+        
+        // Login Form
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, this would validate credentials
+            document.getElementById('login').classList.remove('active');
+            document.getElementById('dashboard').classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector('[data-page="dashboard"]').classList.add('active');
+        });
+        
+        // Register Form
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, this would create a new account
+            alert('Account created successfully! Please login.');
+            document.getElementById('register').classList.remove('active');
+            document.getElementById('login').classList.add('active');
+        });
+        
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('login').classList.add('active');
+            
+            // Reset navigation
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector('[data-page="dashboard"]').classList.add('active');
+        });
+
+        // Charts
+        // Spending by Category Chart
+        const spendingCtx = document.getElementById('spendingChart').getContext('2d');
+        const spendingChart = new Chart(spendingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Food', 'Transport', 'Entertainment', 'Utilities', 'Shopping', 'Other'],
+                datasets: [{
+                    data: [25, 15, 10, 20, 20, 10],
+                    backgroundColor: [
+                        '#ffd6cc',
+                        '#ccf2ff',
+                        '#e6ccff',
+                        '#ffffcc',
+                        '#ffccf2',
+                        '#e0e0e0'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+        
+        // Monthly Overview Chart
+        const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+        const monthlyChart = new Chart(monthlyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    {
+                        label: 'Income',
+                        data: [3200, 3400, 3200, 3500, 3400, 3500],
+                        backgroundColor: '#4cc9f0',
+                        borderWidth: 0
+                    },
+                    {
+                        label: 'Expenses',
+                        data: [1800, 1900, 2100, 1700, 1650, 1845],
+                        backgroundColor: '#f72585',
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
