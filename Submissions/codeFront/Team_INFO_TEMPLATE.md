@@ -1,13 +1,12 @@
-# 🏆 Hackathon Submission – [Team Name]
+# 🏆 Hackathon Submission – CodeFront
 
 ## 👥 Team Information
 
 | Member Name | GitHub Username | Role |
 |--------------|----------------|------|
-| [Full Name] | [@username] | Team Lead |
-| [Full Name] | [@username] | Developer |
-| [Full Name] | [@username] | Designer |
-| [Full Name] | [@username] | [Role] |
+| Vishal | vishaldewani206 | Team Lead |
+| Ghazanfar Ali | ghazanfar-ali-tech | Developer |
+
 
 > The **Team Lead** is responsible for forking the repository, creating this folder, and adding all members as collaborators.
 
@@ -29,9 +28,7 @@ Each folder should include the project code and a clear explanation inside it (l
 
 | Project # | Project Title | 
 |------------|----------------|
-| 1 | [Project Title 1] | 
-| 2 | [Project Title 2] | 
-| 3 | [Project Title 3] |
+| 1 | SkillBridge | 
 
 ---
 
@@ -42,9 +39,9 @@ List the main technologies and tools your team used across all projects.
 ```
 Example:
 Frontend: Flutter, React  
-Backend: Spring Boot, Node.js  
-Database: PostgreSQL  
-Other Tools: GitHub, Figma
+Backend:  Node.js,   
+Database: MongoDb  
+Other Tools: GitHub, Tailwind
 ```
 
 ---
