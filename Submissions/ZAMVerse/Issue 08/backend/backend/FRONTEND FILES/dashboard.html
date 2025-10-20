@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShopEase Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>ShopEase - Sales Dashboard</h1>
+
+  <form id="saleForm">
+    <input type="text" id="productName" placeholder="Product Name" required>
+    <input type="number" id="quantitySold" placeholder="Quantity Sold" required>
+    <input type="number" id="totalAmount" placeholder="Total Amount" required>
+    <button type="submit">Add Sale</button>
+  </form>
+
+  <h2>Sales Records</h2>
+  <table id="salesTable">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity Sold</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Sales Analytics</h2>
+  <canvas id="salesChart"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="chart.js"></script>
+</body>
+</html>
