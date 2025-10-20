@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme{
+    --color-primary: #2A4494;
+    --color-secondary: #84B59F
+}
+
+.btn-primary{
+    @apply py-2 px-5 bg-primary  text-white rounded-full hover:scale-110 transition-transform cursor-pointer 
+}
+.btn-secondary{
+    @apply py-2 px-5 border text-gray-600 dark:text-white rounded-full hover:scale-110 transition-transform cursor-pointer
+}
