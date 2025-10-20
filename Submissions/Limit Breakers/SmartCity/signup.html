@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SmartCity</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label>Name</label>
+                <input type="text" class="name" placeholder="Enter your name" required>
+
+                <label>Email</label>
+                <input type="email" class="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" class="password" placeholder="Enter password" required>
+
+                <label>Role</label>
+                <select class="role" required>
+                    <option value="">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="citizen">Citizen</option>
+                    <option value="driver">Driver</option>
+                </select>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

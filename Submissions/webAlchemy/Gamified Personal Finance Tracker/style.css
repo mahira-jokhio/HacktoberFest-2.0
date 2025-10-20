@@ -1,0 +1,110 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+.allowance-section, .transaction-section, .summary-section {
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #219150;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.day {
+  background: #ecf0f1;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.day:hover {
+  background: #d0e6f7;
+}
+
+.achieved { background-color: #b7f7c2 !important; }
+.missed { background-color: #f7b7b7 !important; }
+
+#chartContainer {
+  margin-top: 25px;
+}
+
+.summary-section {
+  background: #f0f9f2;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* View All Transactions Box */
+#allTransactions {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+
+.transaction-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+#signoutBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#signoutBtn:hover {
+  background-color: #c0392b;
+}

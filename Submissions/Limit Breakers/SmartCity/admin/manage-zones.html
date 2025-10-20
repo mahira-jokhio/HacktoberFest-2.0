@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Zones - SmartCity Admin</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="manage-zones.html" class="active">Manage Zones</a></li>
+      <li><a href="manage-vehicles.html">Manage Vehicles</a></li>
+      <li><a href="manage-staff.html">Manage Staff</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="../index.html">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Manage Zones</h1>
+    <section class="table-section">
+      <h2>All Collection Zones</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Zone ID</th>
+            <th>Name</th>
+            <th>Assigned Driver</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Z001</td>
+            <td>North Block</td>
+            <td>Ali Khan</td>
+            <td>Active</td>
+            <td>
+              <button class="btn-sm edit">Edit</button>
+              <button class="btn-sm danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="form-section">
+      <h2>Add New Zone</h2>
+      <form>
+        <label>Zone Name</label>
+        <input type="text" placeholder="Enter zone name" required>
+
+        <label>Assign Driver</label>
+        <select required>
+          <option value="">Select Driver</option>
+          <option value="1">Ali Khan</option>
+          <option value="2">Sara Ahmed</option>
+        </select>
+
+        <button type="submit" class="btn">Add Zone</button>
+      </form>
+    </section>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

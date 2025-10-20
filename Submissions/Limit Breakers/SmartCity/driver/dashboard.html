@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard - SmartCity</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Driver Panel</h2>
+        <ul>
+            <li><a href="driver-dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="assigned-routes.html">Assigned Routes</a></li>
+            <li><a href="update-status.html">Update Status</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Welcome, Driver 🚛</h1>
+        <div class="cards">
+            <div class="card">
+                <h3>Today's Routes</h3>
+                <p>6</p>
+            </div>
+            <div class="card">
+                <h3>Completed</h3>
+                <p>4</p>
+            </div>
+            <div class="card">
+                <h3>Pending</h3>
+                <p>2</p>
+            </div>
+        </div>
+
+        <section class="table-section">
+            <h2>Today's Route Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route ID</th>
+                        <th>Zone</th>
+                        <th>Status</th>
+                        <th>Start Time</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#R-201</td>
+                        <td>Zone 1</td>
+                        <td><span style="color:green;">Completed</span></td>
+                        <td>08:00 AM</td>
+                        <td><a href="update-status.html" class="btn btn-sm">Edit</a></td>
+                    </tr>
+                    <tr>
+                        <td>#R-205</td>
+                        <td>Zone 5</td>
+                        <td><span style="color:orange;">Pending</span></td>
+                        <td>09:00 AM</td>
+                        <td><a href="update-status.html" class="btn btn-sm">Update</a></td>
+                    </tr>
+                    <tr>
+                        <td>#R-208</td>
+                        <td>Zone 7</td>
+                        <td><span style="color:orange;">Pending</span></td>
+                        <td>10:00 AM</td>
+                        <td><a href="update-status.html" class="btn btn-sm">Update</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

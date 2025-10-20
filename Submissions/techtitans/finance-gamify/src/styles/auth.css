@@ -1,0 +1,9 @@
+.auth-card {
+  max-width:360px;
+  margin:20px auto;
+  padding:16px;
+  border-radius:10px;
+  background:var(--card);
+}
+.auth-card h3 { margin:0 0 10px 0; color:var(--primary); }
+.auth-card input { width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #e6eef9; }

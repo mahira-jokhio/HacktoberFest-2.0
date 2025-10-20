@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCity Waste Collection & Tracking Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>SmartCity Waste Collection & Tracking Portal</h1>
+    <p class="subtitle">Connecting Citizens, Drivers & Administrators for a Cleaner City</p>
+  </header>
+
+  <main>
+    <section id="role-selection">
+      <h2>Select Your Role</h2>
+      <div class="roles">
+        <button onclick="showPortal('admin')">Admin</button>
+        <button onclick="showPortal('driver')">Driver</button>
+        <button onclick="showPortal('citizen')">Citizen</button>
+      </div>
+    </section>
+    <section id="portal-section" class="hidden">
+    
+      <div id="admin-portal" class="portal hidden">
+        <h2>Admin Dashboard</h2>
+        <p>Add and manage collection zones, vehicles, and staff.</p>
+
+        <div class="admin-zone-box">
+          <input type="text" id="zoneName" placeholder="Enter new collection zone">
+          <button onclick="addZone()">Add Zone</button>
+        </div>
+
+        <div class="update-box">
+          <p><strong>Pending Zones:</strong> <span id="pendingCount">0</span></p>
+          <p><strong>Completed Zones:</strong> <span id="completedCount">0</span></p>
+        </div>
+
+        <h3>All Zones</h3>
+        <ul id="zoneList"></ul>
+
+        <button onclick="goBack()">⬅ Back</button>
+      </div>
+
+      <div id="driver-portal" class="portal hidden">
+        <h2>Driver Portal</h2>
+        <p>View assigned routes and update collection status.</p>
+        <label>Status:
+          <select onchange="alert('Status Updated!')">
+            <option>Collected</option>
+            <option>Pending</option>
+            <option>Skipped</option>
+          </select>
+        </label>
+        <button onclick="alert('Photo Uploaded!')">Upload Photo</button>
+        <button onclick="goBack()">⬅ Back</button>
+      </div>
+
+      <div id="citizen-portal" class="portal hidden">
+        <h2>Citizen Portal</h2>
+        <p>Report uncollected waste and track complaint status.</p>
+        <input type="text" id="location" placeholder="Enter your location">
+        <textarea placeholder="Complaint details"></textarea>
+        <button onclick="alert('Complaint submitted!')">Submit Complaint</button>
+
+        <div class="update-box">
+          <p><strong>Status:</strong> In Progress</p>
+          <p><strong>Expected Cleanup:</strong> 2 hours</p>
+        </div>
+
+        <button onclick="goBack()">⬅ Back</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase Initialization -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA7lldS1Ofndus0YyfTFOaZYVvyBKLp0h4",
+      authDomain: "smartcity-e0997.firebaseapp.com",
+      projectId: "smartcity-e0997",
+      storageBucket: "smartcity-e0997.firebasestorage.app",
+      messagingSenderId: "951680150901",
+      appId: "1:951680150901:web:cbce85600f156fed62f73c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db;
+
+    try {
+      const docRef = await addDoc(collection(db, "testCollection"), {
+        test: "Firebase connected!"
+      });
+      console.log("Firebase connection successful:", docRef.id);
+    } catch (e) {
+      console.error("Error connecting to Firebase:", e);
+    }
+  </script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

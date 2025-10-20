@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - SmartCity Admin</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="manage-zones.html">Manage Zones</a></li>
+      <li><a href="manage-vehicles.html">Manage Vehicles</a></li>
+      <li><a href="manage-staff.html">Manage Staff</a></li>
+      <li><a href="reports.html" class="active">Reports</a></li>
+      <li><a href="../index.html">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Reports & Analytics</h1>
+    <div class="cards">
+      <div class="card">
+        <h3>Total Collections (Today)</h3>
+        <p>120</p>
+      </div>
+      <div class="card">
+        <h3>Pending Complaints</h3>
+        <p>14</p>
+      </div>
+      <div class="card">
+        <h3>Resolved Complaints</h3>
+        <p>56</p>
+      </div>
+    </div>
+
+    <section class="table-section">
+      <h2>Recent Complaints</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Complaint ID</th>
+            <th>Citizen</th>
+            <th>Zone</th>
+            <th>Status</th>
+            <th>Resolved At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>C001</td>
+            <td>Ahmed</td>
+            <td>North Block</td>
+            <td>Resolved</td>
+            <td>2025-10-20</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

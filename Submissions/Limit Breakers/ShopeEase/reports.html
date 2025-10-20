@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics | ShopEase</title>
+    <style>
+        /* ===== Global Style ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ===== Main Box ===== */
+        .mainbox {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Head ===== */
+        .reportshead {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .reportshead h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .reportshead p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* ===== Filter Section ===== */
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+
+        .filter-item p {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .report-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .report-input:focus {
+            outline: none;
+            border: 1px solid #4e54c8;
+            box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+        }
+
+        .filterbtn {
+            padding: 12px 20px;
+            background: #4e54c8;
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            align-self: flex-end;
+        }
+
+        .filterbtn:hover {
+            background: #3d41a8;
+        }
+
+        /* ===== Summary Cards ===== */
+        .summary-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            flex: 1;
+            min-width: 150px;
+            background: #f9f9ff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .summary-card h3 {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .summary-card p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4e54c8;
+        }
+
+        /* ===== Table Section ===== */
+        .report-table-container h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background: #f9f9ff;
+        }
+
+        /* ===== Export Buttons ===== */
+        .export-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .exportbtn {
+            background: #4e54c8;
+            color: #fff;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .exportbtn:hover {
+            background: #3d41a8;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 600px) {
+            .summary-section {
+                flex-direction: column;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            .export-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbox">
+        <div class="reportshead">
+            <h2>Sales Reports & Analytics</h2>
+            <p>View and export your daily or monthly performance</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-item">
+                <p>Start Date</p>
+                <input type="date" class="report-input start-date">
+            </div>
+            <div class="filter-item">
+                <p>End Date</p>
+                <input type="date" class="report-input end-date">
+            </div>
+            <button class="filterbtn">Generate Report</button>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-section">
+            <div class="summary-card">
+                <h3>Total Sales</h3>
+                <p>$<span class="total-sales">0</span></p>
+            </div>
+            <div class="summary-card">
+                <h3>Products Sold</h3>
+                <p><span class="total-products">0</span></p>
+            </div>
+            <div class="summary-card">
+                <h3>Top Product</h3>
+                <p><span class="top-product">—</span></p>
+            </div>
+        </div>
+
+        <!-- Report Table -->
+        <div class="report-table-container">
+            <h3>Report Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody class="report-table">
+                    <!-- Report rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Buttons -->
+        <div class="export-buttons">
+            <button class="exportbtn pdf-btn">Export PDF</button>
+            <button class="exportbtn csv-btn">Export CSV</button>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

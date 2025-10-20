@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Dashboard - SmartCity</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Citizen Panel</h2>
+        <ul>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="report.html">Report Complaint</a></li>
+            <li><a href="view-status.html">View Complaints</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Welcome, Citizen 👋</h1>
+        <div class="cards">
+            <div class="card">
+                <h3>Total Complaints</h3>
+                <p>14</p>
+            </div>
+            <div class="card">
+                <h3>Resolved</h3>
+                <p>10</p>
+            </div>
+            <div class="card">
+                <h3>Pending</h3>
+                <p>4</p>
+            </div>
+        </div>
+
+        <section class="table-section">
+            <h2>Recent Complaints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Reported Date</th>
+                        <th>Expected Resolution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1021</td>
+                        <td>Sector 5</td>
+                        <td><span style="color:green;">Resolved</span></td>
+                        <td>2025-10-17</td>
+                        <td>2025-10-18</td>
+                    </tr>
+                    <tr>
+                        <td>#1025</td>
+                        <td>Sector 8</td>
+                        <td><span style="color:orange;">Pending</span></td>
+                        <td>2025-10-19</td>
+                        <td>2025-10-21</td>
+                    </tr>
+                    <tr>
+                        <td>#1028</td>
+                        <td>Sector 2</td>
+                        <td><span style="color:green;">Resolved</span></td>
+                        <td>2025-10-15</td>
+                        <td>2025-10-16</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

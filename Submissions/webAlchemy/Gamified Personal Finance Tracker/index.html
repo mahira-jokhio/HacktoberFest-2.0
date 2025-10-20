@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎯 Gamified Finance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <button id="signoutBtn" onclick="logout()">Sign Out</button>
+
+  <div class="container">
+    <h1>💰 Gamified Finance Tracker</h1>
+
+
+    <div class="allowance-section">
+      <h3>Set Monthly Allowance (₨)</h3>
+      <input type="number" id="monthlyAllowance" placeholder="Enter amount...">
+      <button onclick="setAllowance()">Save</button>
+      <p id="dailyGoal"></p>
+    </div>
+
+  
+    <div class="transaction-section">
+      <h3>Add Expenditure</h3>
+      <input id="desc" placeholder="Description">
+      <input id="amount" type="number" placeholder="Amount (₨)">
+      <select id="category">
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Entertainment</option>
+        <option>Utilities</option>
+      </select>
+      <input type="date" id="date">
+      <input type="time" id="time">
+      <button onclick="addTransaction()">Add</button>
+    </div>
+
+   
+    <div id="calendar"></div>
+
+ 
+    <div class="summary-section">
+      <button onclick="showDailySummary()">Show Daily Summary</button>
+      <button onclick="viewAllTransactions()">View All</button>
+      <button onclick="deleteAll()">Delete All</button>
+      <p id="summaryOutput"></p>
+    </div>
+
+  
+    <div id="allTransactions"></div>
+
+
+    <p><strong>Points:</strong> <span id="points">0</span> 🏆</p>
+
+
+    <div id="chartContainer">
+      <canvas id="expenseChart"></canvas>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

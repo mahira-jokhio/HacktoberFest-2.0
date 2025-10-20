@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+    <div class="logo">EduLearn</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="instructor.html">Instructor</a>
+      <a href="student.html">Student</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+    <section class="instructor-panel">
+  <h2>Instructor Dashboard</h2>
+  <form id="add-course-form">
+    <input type="text" id="title" placeholder="Course Title" required>
+    <input type="text" id="duration" placeholder="Duration" required>
+    <input type="text" id="level" placeholder="Difficulty Level" required>
+    <input type="text" id="category" placeholder="Category" required>
+    <button type="submit">Add Course</button>
+  </form>
+
+  <div id="instructor-courses"></div>
+</section>
+
+<script src="js/instructor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Status - Driver</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Driver Panel</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="assigned-routes.html">Assigned Routes</a></li>
+      <li><a href="update-status.html" class="active">Update Status</a></li>
+      <li><a href="../index.html">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Update Collection Status</h1>
+    <section class="form-section">
+      <form>
+        <label>Select Zone</label>
+        <select required>
+          <option value="">Choose Zone</option>
+          <option>North Block</option>
+        </select>
+
+        <label>Status</label>
+        <select required>
+          <option value="collected">Collected</option>
+          <option value="pending">Pending</option>
+          <option value="skipped">Skipped</option>
+        </select>
+
+        <label>Upload Proof Photo</label>
+        <input type="file" accept="image/*">
+
+        <button type="submit" class="btn">Submit Update</button>
+      </form>
+    </section>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

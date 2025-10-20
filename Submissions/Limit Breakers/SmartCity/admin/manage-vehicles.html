@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Vehicles - SmartCity Admin</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="manage-zones.html">Manage Zones</a></li>
+      <li><a href="manage-vehicles.html" class="active">Manage Vehicles</a></li>
+      <li><a href="manage-staff.html">Manage Staff</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="../index.html">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Manage Vehicles</h1>
+    <section class="table-section">
+      <h2>Vehicle List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Vehicle ID</th>
+            <th>Plate Number</th>
+            <th>Status</th>
+            <th>Assigned Zone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>V001</td>
+            <td>ABC-123</td>
+            <td>Available</td>
+            <td>North Block</td>
+            <td>
+              <button class="btn-sm edit">Edit</button>
+              <button class="btn-sm danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="form-section">
+      <h2>Add New Vehicle</h2>
+      <form>
+        <label>Plate Number</label>
+        <input type="text" placeholder="e.g. ABC-123" required>
+
+        <label>Assign Zone</label>
+        <select required>
+          <option value="">Select Zone</option>
+          <option>North Block</option>
+          <option>South Block</option>
+        </select>
+
+        <button type="submit" class="btn">Add Vehicle</button>
+      </form>
+    </section>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* 🌐 Global Reset & Font Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* 🔹 Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: linear-gradient(90deg, #4f46e5, #6d28d9);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #facc15;
+  text-decoration: underline;
+}
+
+/* 🌟 Hero Section */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(to right, #4f46e5, #6d28d9);
+  color: white;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: white;
+  color: #4f46e5;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+  background: #facc15;
+  color: #1e293b;
+  transform: translateY(-3px);
+}
+
+/* 📚 Course Cards */
+.courses-container {
+  padding: 60px 80px;
+  background-color: #f9fafb;
+}
+
+.courses-container h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 2rem;
+  color: #334155;
+}
+
+#course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.course-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h3 {
+  color: #4f46e5;
+  margin-bottom: 10px;
+}
+
+.course-card p {
+  margin: 6px 0;
+  color: #475569;
+}
+
+.course-card button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.course-card button:hover {
+  background: #6d28d9;
+  transform: scale(1.05);
+}
+
+/* 👩‍🏫 Instructor Form */
+.instructor-panel {
+  padding: 50px 80px;
+  background-color: #f8fafc;
+}
+
+.instructor-panel h2 {
+  text-align: center;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.instructor-panel form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.instructor-panel input {
+  flex: 1 1 200px;
+  padding: 10px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.instructor-panel input:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+.instructor-panel button {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.instructor-panel button:hover {
+  background: #6d28d9;
+}
+
+/* 🎓 Student Dashboard */
+.student-panel {
+  padding: 50px 80px;
+}
+
+.student-panel h2 {
+  text-align: center;
+  color: #334155;
+  margin-bottom: 25px;
+}
+
+.progress-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 15px auto;
+  width: 80%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  background: #e2e8f0;
+  border-radius: 10px;
+  height: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  background: linear-gradient(90deg, #4f46e5, #6d28d9);
+  height: 12px;
+  transition: width 0.5s ease;
+}
+
+/* ⚙️ Admin Panel */
+.admin-panel {
+  padding: 50px 80px;
+  text-align: center;
+}
+
+.admin-panel h2 {
+  color: #334155;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.analytics {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.analytics p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  color: #475569;
+}
+
+/* 🏅 Certificate Page */
+.certificate {
+  text-align: center;
+  padding: 100px 50px;
+  background: white;
+  width: 70%;
+  margin: 50px auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.certificate h1 {
+  color: #4f46e5;
+  margin-bottom: 20px;
+}
+
+.certificate p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.certificate button {
+  background: #4f46e5;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.certificate button:hover {
+  background: #6d28d9;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .courses-container, .instructor-panel, .student-panel {
+    padding: 30px 20px;
+  }
+
+  .progress-card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* ===== Dashboard Page Theme ===== */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            height: 100vh;
+            display: flex;
+        }
+
+        /* ===== Dashboard Wrapper ===== */
+        .DashBox {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ===== Sidebar Navigation ===== */
+        .NavBox {
+            width: 220px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+            padding: 20px 0;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .NavBox-logo {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #4e54c8;
+            margin-bottom: 20px;
+        }
+
+        .Nav-Box-Links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 15px;
+        }
+
+        .Nav-Box-Links a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .Nav-Box-Links a:hover,
+        .Nav-Box-Links a.active {
+            background: #4e54c8;
+            color: #fff;
+        }
+
+        /* ===== Main Content ===== */
+        .MainContent {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            color: #333;
+        }
+
+        /* ===== Cards Section ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #4e54c8;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* ===== Recent Transactions Table ===== */
+        .Recent-transactions-table-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .Recent-transactions-table-box h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #4e54c8;
+        }
+
+        .Recent-transactions-table-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .Recent-transactions-table-box th,
+        .Recent-transactions-table-box td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .Recent-transactions-table-box th {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .Recent-transactions-table-box tbody tr:hover {
+            background: #f9f9ff;
+        }
+
+        /* ===== Top Selling Products ===== */
+        .Top-Selling-Box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .Top-Selling-Box h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #4e54c8;
+        }
+
+        .Top-Selling-Box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .Top-Selling-Box li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .Top-Selling-Box li:last-child {
+            border-bottom: none;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .DashBox {
+                flex-direction: column;
+            }
+
+            .NavBox {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .Nav-Box-Links {
+                flex-direction: row;
+                gap: 5px;
+                padding: 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="DashBox">
+        <!-- Sidebar Navigation -->
+        <div class="NavBox">
+            <div class="NavBox-logo">
+                <h2>🛍️ ShopEase</h2>
+            </div>
+            <div class="Nav-Box-Links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="products.html">Products</a>
+                <a href="sales.html">Sales</a>
+                <a href="reports.html">Reports</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Content -->
+        <div class="MainContent">
+            <!-- Cards Section -->
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Products</h3>
+                    <p id="totalProducts">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Sales Today</h3>
+                    <p id="totalSales">0</p>
+                </div>
+                <div class="card">
+                    <h3>Low Stock Alerts</h3>
+                    <p id="lowStock">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <p id="totalRevenue">$0</p>
+                </div>
+            </div>
+
+            <!-- Recent Transactions Table -->
+            <div class="Recent-transactions-table-box">
+                <h2>🧾 Recent Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                            <th>Cashier</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTable">
+                        <tr>
+                            <td>—</td>
+                            <td>No transactions yet</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top Selling Products Section -->
+            <div class="Top-Selling-Box">
+                <h2>🏆 Top Selling Products</h2>
+                <ul id="topSellingList">
+                    <li>No data yet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

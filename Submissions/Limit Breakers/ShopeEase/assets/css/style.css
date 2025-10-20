@@ -1,0 +1,250 @@
+/* ===== Global Style ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Main Box ===== */
+.mainbox {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Login Head ===== */
+.loginhead {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.loginhead h2 {
+  font-size: 28px;
+  color: #333;
+}
+
+.loginhead p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ===== Input Labels & Fields ===== */
+.loginmail p,
+.loginpassword p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.login-mail-input,
+.login-password-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.login-mail-input:focus,
+.login-password-input:focus {
+  outline: none;
+  border: 1px solid #4e54c8;
+  box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+}
+
+/* ===== Login Button ===== */
+.logbtn {
+  width: 100%;
+  padding: 12px;
+  background: #4e54c8;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logbtn:hover {
+  background: #3d41a8;
+}
+
+/* ===== Footer Text ===== */
+.loginfooter {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.loginfooter p {
+  font-size: 13px;
+  color: #555;
+}
+
+.loginfooter p span {
+  color: #4e54c8;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .mainbox {
+    padding: 25px 15px;
+    margin: 0 10px;
+  }
+
+  .loginhead h2 {
+    font-size: 24px;
+  }
+}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== Main Box ===== */
+        .mainbox {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Signup Head ===== */
+        .signuphead {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .signuphead h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .signuphead p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* ===== Input Fields ===== */
+        .signupfield p {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .signup-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .signup-input:focus {
+            outline: none;
+            border: 1px solid #4e54c8;
+            box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+        }
+
+        /* ===== Role Selection ===== */
+        .role-box {
+            display: flex;
+            justify-content: space-around;
+            background: #f9f9ff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .role-box label {
+            font-size: 14px;
+            color: #444;
+            cursor: pointer;
+        }
+
+        .role-box input[type="radio"] {
+            margin-right: 5px;
+            accent-color: #4e54c8;
+        }
+
+        /* ===== Signup Button ===== */
+        .signupbtn {
+            width: 100%;
+            padding: 12px;
+            background: #4e54c8;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .signupbtn:hover {
+            background: #3d41a8;
+        }
+
+        /* ===== Footer Text ===== */
+        .signupfooter {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signupfooter p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .signupfooter a {
+            color: #4e54c8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signupfooter a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            .mainbox {
+                padding: 25px 15px;
+                margin: 0 10px;
+            }
+
+            .signuphead h2 {
+                font-size: 24px;
+            }
+        }

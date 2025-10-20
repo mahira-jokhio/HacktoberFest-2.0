@@ -1,0 +1,101 @@
+
+
+/* 📚 Course Section */
+.courses {
+  padding: 40px 60px 80px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* 🎓 Course Card */
+.course-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s ease;
+  text-align: center;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 3px solid #4f46e5;
+}
+
+.course-card h3 {
+  color: #4f46e5;
+  font-size: 1.2rem;
+  margin: 15px 0 8px;
+}
+
+.course-card p {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.enroll-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.enroll-btn:hover {
+  background: #6d28d9;
+  transform: scale(1.05);
+}
+
+/* 🦶 Footer */
+.footer {
+  background: #4f46e5;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  margin-top: 40px;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+
+  .page-header {
+    padding: 60px 20px;
+  }
+
+  .courses {
+    padding: 20px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .course-card img {
+    height: 160px;
+  }
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <style>
+        /* ===== Product Page Theme ===== */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 30px 10px;
+        }
+
+        /* ===== Page Container ===== */
+        .productBox {
+            width: 100%;
+            max-width: 1000px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Header Section ===== */
+        .headBox {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .headBox h2 {
+            font-size: 28px;
+            color: #4e54c8;
+            margin-bottom: 5px;
+        }
+
+        .headBox p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* ===== Add Product Section ===== */
+        .Add-Section {
+            background: #f9f9ff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .Add-Section-b1 h3 {
+            color: #4e54c8;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Input & Button Styles */
+        .Add-Section-b2,
+        .Add-Section-b3 {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .Product-Name,
+        .Product-Id,
+        .Product-Category,
+        .Product-Price,
+        .Product-Quantity {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .Product-Name:focus,
+        .Product-Id:focus,
+        .Product-Category:focus,
+        .Product-Price:focus,
+        .Product-Quantity:focus {
+            outline: none;
+            border: 1px solid #4e54c8;
+            box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+        }
+
+        .Add-Product {
+            background: #4e54c8;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .Add-Product:hover {
+            background: #3d41a8;
+        }
+
+        /* ===== Search Section ===== */
+        .Search-Section {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .Search {
+            width: 300px;
+            max-width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+            margin-right: 700px;
+        }
+
+        .Search:focus {
+            outline: none;
+            border: 1px solid #4e54c8;
+            box-shadow: 0 0 5px rgba(78, 84, 200, 0.4);
+        }
+
+        /* ===== Product Table Section ===== */
+        .Table-Section {
+            overflow-x: auto;
+        }
+
+        .Table-Section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .Table-Section th,
+        .Table-Section td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .Table-Section th {
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .Table-Section tbody tr:hover {
+            background: #f9f9ff;
+        }
+
+        /* ===== Action Buttons ===== */
+        .Product-Edit,
+        .Product-Remove {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .Product-Edit {
+            background: #4e54c8;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        .Product-Edit:hover {
+            background: #3d41a8;
+        }
+
+        .Product-Remove {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .Product-Remove:hover {
+            background: #c0392b;
+        }
+
+        /* ===== Low Stock Highlight ===== */
+        .low-stock {
+            background: #fff4e5 !important;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+
+            .Add-Section-b2,
+            .Add-Section-b3 {
+                flex-direction: column;
+            }
+
+            .Search-Section {
+                justify-content: center;
+            }
+
+            .Search {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="productBox">
+        <div class="headBox">
+            <h2>Product Management</h2>
+            <p>Manage Your Product inventory</p>
+        </div>
+        <div class="Add-Section">
+            <div class="Add-Section-b1">
+                <h3>Add New Product</h3>
+            </div>
+
+            <div class="Add-Section-b2">
+                <input type="text" placeholder="Product Name" class="Product-Name">
+                <input type="text" placeholder="SKU / ID" class="Product-Id">
+                <input type="text" placeholder="Category" class="Product-Category">
+                <button class="Add-Product">Add Product</button>
+            </div>
+
+            <div class="Add-Section-b3">
+                <input type="text" placeholder="Price" class="Product-Price">
+                <input type="text" placeholder="Quantity" class="Product-Quantity">
+            </div>
+
+        </div>
+
+        <div class="Search-Section">
+            <input type="text" placeholder="Type to Search By Name or SKU" class="Search">
+        </div>
+        <div class="Table-Section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="Product-Table">
+                    <tr>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>
+                            <button class="Product-Edit">Edit</button>
+                            <button class="Product-Remove">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

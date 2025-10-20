@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Inventory System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> ShopEase - Simple Inventory System</h1>
+
+  <div class="form-section">
+    <h2>Add Product</h2>
+    <form id="productForm">
+      <input type="text" id="name" placeholder="Product Name" required>
+      <select id="category" required>
+        <option value="">Select Category</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Stationery">Stationery</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+      </select>
+      <input type="number" id="price" placeholder="Price (₨)" required>
+      <input type="number" id="quantity" placeholder="Quantity" required>
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
+
+  <div class="inventory">
+    <h2>Current Inventory</h2>
+    <table id="inventoryTable">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Price (₨)</th>
+          <th>Starting Qty</th>
+          <th>Remaining Qty</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="sales">
+    <h2>Sales Summary</h2>
+    <button id="produceSummaryBtn">Produce Summary</button>
+    <div id="summaryOutput" style="margin-top: 10px;">
+      <p>Total Sales: <span id="totalSales">₨0</span></p>
+      <p>Total Profit: <span id="totalProfit">₨0</span></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
